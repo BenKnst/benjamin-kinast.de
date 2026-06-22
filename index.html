@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benjamin Kinast — Medizinische Informatik</title>
+<meta name="description" content="Benjamin Kinast, wissenschaftlicher Mitarbeiter am Institut für Medizinische Informatik und Künstliche Intelligenz, UKSH. Requirements Engineering, mHealth, Datenharmonisierung und Interoperabilität.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Benjamin Kinast — Medizinische Informatik">
+<meta property="og:description" content="Requirements Engineering, mHealth, Datenharmonisierung und semantische Interoperabilität in der medizinischen Informatik.">
+<meta property="og:url" content="https://www.benjamin-kinast.de">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1d21;--ink-soft:#52585f;--paper:#f6f4ef;--paper-edge:#ebe8e0;
+    --line:#d9d5cb;--accent:#2f5d50;--accent-soft:#5e8a7d;
+    --display:"Newsreader", Georgia, serif;--body:"Inter", system-ui, sans-serif;--maxw:760px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline;text-underline-offset:3px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  /* scroll offset so anchored sections clear the sticky nav */
+  section[id], header[id]{scroll-margin-top:72px}
+
+  nav.top{position:sticky;top:0;z-index:10;background:rgba(246,244,239,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:15px;padding-bottom:15px;max-width:1180px}
+  nav.top .name{font-family:var(--display);font-weight:600;font-size:16px}
+  nav.top .name-title{font-family:var(--body);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-left:8px}
+  .hero-intro strong{font-weight:600;color:var(--ink);box-shadow:inset 0 -0.5em 0 rgba(94,138,125,.18)}
+  nav.top .menu{display:flex;gap:22px}
+  nav.top .menu a{font-size:14px;color:var(--ink-soft);font-weight:500}
+  .lang-switch{display:inline-flex;gap:8px;align-items:center;padding-left:8px;border-left:1px solid var(--line)}
+  .lang-switch a{font-size:17px;line-height:1;opacity:.4;transition:opacity .18s;text-decoration:none}
+  .lang-switch a:hover{opacity:.8;text-decoration:none}
+  .lang-switch a.lang-active{opacity:1}
+  nav.top .menu a:hover{color:var(--accent);text-decoration:none}
+
+  header{padding:72px 0 64px;border-bottom:1px solid var(--line)}
+  header .wrap{max-width:900px}
+  .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:22px}
+  h1{font-family:var(--display);font-weight:500;font-size:clamp(1.9rem,4.8vw,2.7rem);line-height:1.1;letter-spacing:-.01em}
+
+  .hero-grid{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start}
+
+  /* index card (left) */
+  .id-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:36px 28px 0;text-align:center;box-shadow:0 18px 40px -24px rgba(26,29,33,.4)}
+  .portrait{width:170px;height:170px;border-radius:50%;object-fit:cover;background:var(--paper-edge);border:1px solid var(--line);margin:0 auto}
+  .id-name{font-family:var(--display);font-weight:600;font-size:1.5rem;margin-top:22px}
+  .id-rule{width:48px;height:2px;background:var(--accent-soft);margin:14px auto}
+  .id-role{font-size:14px;letter-spacing:.04em;color:var(--ink-soft);padding-bottom:26px}
+  .id-icons{display:flex;justify-content:center;gap:18px;background:var(--paper-edge);margin:0 -28px;padding:16px;border-radius:0 0 14px 14px}
+  .id-icons a{color:var(--accent)}
+  .id-icons a:hover{color:var(--ink)}
+  .id-icons svg{width:22px;height:22px;display:block}
+
+  /* hero main (right) */
+  .greet{font-family:var(--display);font-style:italic;font-weight:600;font-size:clamp(3rem,7vw,4.6rem);line-height:.95;color:var(--accent);margin-bottom:14px}
+  .hero-main h1{margin-bottom:26px}
+  .hero-cta{display:flex;gap:12px;margin-bottom:34px}
+  .hero-cta a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;color:#fff;background:var(--accent);padding:10px 24px;border-radius:100px;transition:background .18s}
+  .hero-cta a:hover{text-decoration:none;background:#264a40}
+  .hero-cta a:last-child{color:var(--accent);background:transparent;border:1px solid var(--accent)}
+  .hero-cta a:last-child:hover{background:rgba(47,93,80,.07)}
+  .hero-intro p{margin-bottom:1em}
+  .hero-intro p:last-child{margin-bottom:0}
+
+  .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .links a{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:500;color:var(--ink);border:1px solid var(--line);padding:7px 14px;border-radius:100px;background:rgba(255,255,255,.5);transition:border-color .18s, background .18s}
+  .links a:hover{text-decoration:none;border-color:var(--accent-soft);background:#fff}
+  .links svg{width:15px;height:15px;flex:0 0 15px}
+
+  section{padding:60px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:30px}
+  .sec-num{font-family:var(--display);font-size:15px;color:var(--accent-soft);font-style:italic}
+  h2{font-family:var(--display);font-weight:500;font-size:1.9rem;letter-spacing:-.01em}
+  section p{margin-bottom:1.1em;color:var(--ink)}
+  section p:last-child{margin-bottom:0}
+  .muted{color:var(--ink-soft)}
+
+  .subhead{font-family:var(--display);font-weight:600;font-size:1.15rem;margin:38px 0 14px}
+  .subhead:first-of-type{margin-top:0}
+
+  /* timeline rows for Werdegang, Ausbildung, Lehre */
+  .tl-item{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid var(--paper-edge)}
+  .tl-item:first-of-type{border-top:none}
+  .tl-period{font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--accent-soft);text-transform:uppercase;padding-top:3px}
+  .tl-body .role{font-weight:600}
+  .tl-body .place{color:var(--ink-soft);font-size:15px}
+  .tl-body p{color:var(--ink-soft);font-size:15px;margin-top:5px;margin-bottom:0}
+  .tl-body .thesis{font-style:italic}
+
+  /* compact skills list */
+  .skills{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+  .skill{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:14.5px;line-height:1.4;flex:1 1 calc(50% - 12px);min-width:220px;box-shadow:0 10px 24px -18px rgba(26,29,33,.45);display:flex;align-items:flex-start;gap:10px}
+  .skill::before{content:"";flex:0 0 7px;height:7px;margin-top:7px;border-radius:50%;background:var(--accent-soft)}
+
+  /* awards */
+  .award-item{display:grid;grid-template-columns:80px 1fr;gap:20px;padding:14px 0;border-top:1px solid var(--paper-edge)}
+  .award-item:first-of-type{border-top:none}
+  .award-year{font-size:14px;font-weight:600;color:var(--accent-soft)}
+  .award-body{font-size:15.5px;color:var(--ink-soft)}
+
+  /* PDF download button */
+  .dl{margin-top:30px}
+  .dl a{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#fff;background:var(--accent);padding:10px 18px;border-radius:100px;transition:background .18s}
+  .dl a:hover{text-decoration:none;background:#264a40}
+  .dl svg{width:15px;height:15px}
+
+  /* publications */
+  .pub-group-title{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:30px 0 4px}
+  .pub-group-title:first-of-type{margin-top:0}
+  .pub{padding:16px 0;border-top:1px solid var(--paper-edge);font-size:15.5px;line-height:1.55}
+  .pub .self{font-weight:600}
+  .pub em{font-style:italic}
+  .pub-title{font-family:var(--display);font-weight:500;font-size:1.05em;color:var(--ink)}
+  .pub .doi{display:inline-block;margin-top:4px;font-size:13px}
+
+  /* sailing dummy */
+  .sailing-item{padding:18px 0;border-top:1px solid var(--paper-edge)}
+  .contact-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .contact-links a{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:500;color:var(--ink);border:1px solid var(--line);padding:8px 16px;border-radius:100px;background:rgba(255,255,255,.5);transition:border-color .18s,background .18s}
+  .contact-links a:hover{text-decoration:none;border-color:var(--accent-soft);background:#fff}
+  .contact-links svg{width:15px;height:15px;flex:0 0 15px}
+  .sailing-item:first-child{border-top:none}
+  .sailing-item h3{font-family:var(--display);font-weight:500;font-size:1.2rem;margin-bottom:6px}
+  .dummy{display:inline-block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:rgba(94,138,125,.12);border:1px solid var(--line);border-radius:5px;padding:3px 9px;margin-bottom:22px}
+
+  footer{padding:40px 0 60px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:14px;color:var(--ink-soft)}
+
+  @media (max-width:720px){
+    .hero-grid{grid-template-columns:1fr;gap:32px;max-width:420px;margin:0 auto}
+  }
+  @media (max-width:560px){
+    nav.top .menu{gap:16px}
+    nav.top .name-title{display:none}
+    .tl-item,.award-item{grid-template-columns:1fr;gap:6px}
+    .tl-period{padding-top:0}
+    .skills{grid-template-columns:1fr}
+    header{padding:50px 0 48px}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="name" href="#top">Benjamin Kinast <span class="name-title">Digital Medicine Researcher</span></a>
+    <div class="menu">
+      <a href="#about">About</a>
+      <a href="#cv">CV</a>
+      <a href="#publications">Publikationen</a>
+      <a href="#kontakt">Kontakt</a>
+      <span class="lang-switch"><a href="index.html" class="lang-active" aria-label="Deutsch">🇩🇪</a><a href="en.html" aria-label="English">🇬🇧</a></span>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <aside class="id-card">
+        <img class="portrait" src="portrait.jpg" alt="Porträt von Benjamin Kinast">
+        <div class="id-name">Benjamin Kinast</div>
+        <div class="id-rule"></div>
+        <div class="id-role">Medizinische Informatik</div>
+        <div class="id-icons">
+          <a href="https://orcid.org/0000-0003-2554-4381" target="_blank" rel="noopener" aria-label="ORCID">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><text x="12" y="16" font-size="9" text-anchor="middle" fill="currentColor" font-family="sans-serif" stroke="none">iD</text></svg>
+          </a>
+          <a href="https://scholar.google.com/citations?hl=de&user=Z05rTXoAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 1 9l11 7 9-5.7V17h2V9zM5 13.2V17l7 4 7-4v-3.8l-7 4.4z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/benjaminkinast" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+          <a href="mailto:research@benjamin-kinast.de" aria-label="E-Mail">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </a>
+        </div>
+      </aside>
+
+      <div class="hero-main">
+        <p class="greet">Hallo!</p>
+        <h1>Ich erforsche digitale Medizin.</h1>
+        <div class="hero-cta">
+          <a href="#cv">CV</a>
+          <a href="#publications">Publikationen</a>
+        </div>
+        <div class="hero-intro">
+          <p>Mich treibt die Frage an, wie digitale Werkzeuge die Gesundheitsversorgung wirklich besser machen können, statt sie nur digitaler zu machen.</p>
+          <p>Ein Großteil meiner Arbeit dreht sich um die <strong>Nutzeranforderungen an mHealth-Anwendungen</strong> und <strong>elektronische Patientenakten</strong>, um die Frage, wie sich <strong>klinische Daten</strong> sinnvoll harmonisieren und verknüpfen lassen, und darum, wie <strong>Nutzerfeedback</strong> zu besseren digitalen Gesundheitsanwendungen führen kann.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">01</span><h2>About</h2></div>
+      <p>Ich bin wissenschaftlicher Mitarbeiter am Institut für Medizinische Informatik und Künstliche Intelligenz des Universitätsklinikums Schleswig-Holstein und promoviere an der Christian-Albrechts-Universität zu Kiel. In meiner Forschung beschäftige ich mich mit Requirements Engineering in der medizinischen Informatik.</p>
+      <p>Dabei reichen die Themen von den Nutzeranforderungen an mHealth-Lösungen für digitale Therapeutika (DTx) und elektronische Patientenakten bis zur Frage, wie sich heterogene klinische Daten harmonisiert und semantisch interoperabel aufbereiten lassen, sodass sie für analytische und KI-gestützte Verfahren nutzbar werden.</p>
+      <p>In BMBF-geförderten Forschungsprojekten wie ACRIBiS, HiGHmed und NEMO verantworte ich das IT-Projektmanagement von der Antragsphase über die operative Umsetzung bis zum Schlussbericht.</p>
+    </div>
+  </section>
+
+  <section id="cv">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Curriculum Vitae</h2></div>
+
+      <div class="subhead">Beruflicher Werdegang</div>
+      <div class="tl-item">
+        <div class="tl-period">seit 05/2019</div>
+        <div class="tl-body">
+          <div class="role">Wissenschaftlicher Mitarbeiter</div>
+          <div class="place">Institut für Medizinische Informatik und Künstliche Intelligenz, Universitätsklinikum Schleswig-Holstein</div>
+          <p>Projektleitung und Datenrefinement in BMBF-geförderten Forschungsprojekten, mit Fokus auf der Aufbereitung klinischer Versorgungsdaten für Forschung und Entscheidungsunterstützung.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">06/2019–12/2023</div>
+        <div class="tl-body">
+          <div class="role">Freelance Applikations-Tester (Silver Level)</div>
+          <div class="place">Applause App Quality, Inc.</div>
+          <p>Funktionale und Usability-Tests von Mobile-, Web- und Desktopanwendungen für mittelständische, DAX-gelistete und Fortune-500-Unternehmen.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">10/2018–05/2019</div>
+        <div class="tl-body">
+          <div class="role">Masterand</div>
+          <div class="place">IGES Institut GmbH Berlin, Sektion Versorgungsforschung</div>
+          <p>Gesundheitsökonomische Sekundärdatenanalyse zu sektorenübergreifenden Versorgungskosten palliativmedizinischer Patienten in Bayern.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">04/2018–03/2019</div>
+        <div class="tl-body">
+          <div class="role">Wissenschaftlicher Assistent</div>
+          <div class="place">AG Public Reporting (Prof. Dr. Uwe Sander), Hochschule Hannover</div>
+          <p>Text-Mining-Methoden zur Extraktion von Patientenbewertungen aus Krankenhaus- und Arztbewertungsportalen.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">12/2016–03/2018</div>
+        <div class="tl-body">
+          <div class="role">Projektkoordinator</div>
+          <div class="place">Corantis-Kliniken GmbH</div>
+          <p>Koordination des EU-finanzierten INTERREG-V-Projekts VIREP zur Virtual-Reality-gestützten Schmerztherapie.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">2014–2015</div>
+        <div class="tl-body">
+          <div class="role">Studentische Hilfskraft</div>
+          <div class="place">AG Informatik im Gesundheitswesen (Prof. Dr. Ursula Hübner), Hochschule Osnabrück</div>
+        </div>
+      </div>
+
+      <div class="subhead">Kompetenzen</div>
+      <div class="skills">
+        <div class="skill">Requirements Engineering in der medizinischen Informatik</div>
+        <div class="skill">Nutzeranforderungen an mHealth, DTx und elektronische Patientenakten</div>
+        <div class="skill">Datenharmonisierung & semantische Interoperabilität (openEHR, HL7 v2/FHIR)</div>
+        <div class="skill">Klinische Terminologien & Nomenklaturen (LOINC)</div>
+        <div class="skill">LLM-gestützte Analyse von Nutzerfeedback zu mHealth-Anwendungen</div>
+        <div class="skill">Projektleitung in BMBF-geförderten Forschungsprojekten</div>
+      </div>
+
+      <div class="subhead">Ausbildung</div>
+      <div class="tl-item">
+        <div class="tl-period">seit 09/2020</div>
+        <div class="tl-body">
+          <div class="role">Promotion (Dr. rer. medic.)</div>
+          <div class="place">Christian-Albrechts-Universität zu Kiel</div>
+          <p class="thesis">Anforderungsanalyse zur Integration kardiologischer Versorgungsdaten in ein Datenintegrationszentrum: Technische Spezifikation und Reifegradbewertung für die regionale und institutionelle Datenharmonisierung.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">2017–2019</div>
+        <div class="tl-body">
+          <div class="role">Master of Arts, Medizinisches Informationsmanagement</div>
+          <div class="place">Hochschule Hannover</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">2013–2016</div>
+        <div class="tl-body">
+          <div class="role">Bachelor of Arts, Betriebswirtschaft im Gesundheitswesen</div>
+          <div class="place">Hochschule Osnabrück</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">2009–2011</div>
+        <div class="tl-body">
+          <div class="role">Ausbildung zum Informatikkaufmann</div>
+          <div class="place">Fachklinik Bad Bentheim (Thermalsole- und Schwefelbad Bentheim GmbH)</div>
+        </div>
+      </div>
+
+      <div class="subhead">Auszeichnungen & Stipendien</div>
+      <div class="award-item">
+        <div class="award-year">2024</div>
+        <div class="award-body">Mentorentätigkeit in der Förderphase des Startups „Glowseeker" im AI Ideation Program des AI.Startup.Hub Hamburg (Winter Batch 2024).</div>
+      </div>
+      <div class="award-item">
+        <div class="award-year">2021</div>
+        <div class="award-body">Promotionsstipendium „Forschungsförderung 2021" der Medizinischen Fakultät der CAU Kiel.</div>
+      </div>
+      <div class="award-item">
+        <div class="award-year">2020</div>
+        <div class="award-body">1. Platz des UKSH Healthcare Hackathons mit „FirstAid KID: Große Hilfe für kleine Patienten".</div>
+      </div>
+
+      <div class="subhead">Lehre & akademisches Engagement</div>
+      <div class="tl-item">
+        <div class="tl-period">seit 2021</div>
+        <div class="tl-body">
+          <div class="role">Vorlesung Krankenhausinformationssysteme & eHealth</div>
+          <div class="place">Studiengang Humanmedizin, CAU Kiel</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">seit 2025</div>
+        <div class="tl-body">
+          <div class="role">Dozent im Projekt InSight eHealth</div>
+          <div class="place">Lehre in den Fächern eHealth sowie Projektmanagement-Methoden für Gesundheits-IT-Projekte</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">seit 02/2023</div>
+        <div class="tl-body">
+          <div class="role">Curriculumskommission Humanmedizin</div>
+          <div class="place">Vertreter der Sektion Medizinische Informatik, Medizinische Fakultät der Universität Kiel (NKLM)</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">seit 10/2019</div>
+        <div class="tl-body">
+          <div class="role">AG Consumer Health Informatics (CHI)</div>
+          <div class="place">Deutsche Gesellschaft für Medizinische Informatik, Biometrie und Epidemiologie (GMDS)</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">seit 2019</div>
+        <div class="tl-body">
+          <div class="role">Reviewer für internationale Konferenzen</div>
+          <div class="place">GMDS-Jahreskonferenz, Medical Informatics Europe (MIE), Weltkongress MedInfo</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Publikationen</h2></div>
+
+      <div class="pub-group-title">Erstautorenschaften</div>
+      <div class="pub">Schreiweis, B.*, <span class="self">Kinast, B.*</span>, Bronsch, T., Ulrich, H., Bergh, B. (2026). <span class="pub-title">A Data-Centric Approach for Health Care and Research in a Health Knowledge Management Platform: Implementation and Requirement-Based Evaluation Study</span>. <em>JMIR Medical Informatics</em> 14(e83608). <span class="muted">*Erstautoren</span> <a class="doi" href="https://doi.org/10.2196/83608" target="_blank" rel="noopener">doi.org/10.2196/83608</a></div>
+      <div class="pub"><span class="self">Kinast, B.</span>, Wiedekopf, J., Ulrich, H., Schreiweis, B. (2025). <span class="pub-title">Extracting LOINC Codes from a Laboratory Information System's Index: Addressing Semantic Interoperability with Web Scraping</span>. <em>Stud Health Technol Inform</em> 324:234–239. <a class="doi" href="https://doi.org/10.3233/SHTI250194" target="_blank" rel="noopener">doi.org/10.3233/SHTI250194</a></div>
+      <div class="pub"><span class="self">Kinast, B.</span>, Rohde, H., Anywar, M., Bronsch, T., Voran, J., Kreidl, F., Frank, D., Schreiweis, B. (2024). <span class="pub-title">Implementation of an Atrioventricular Valve Intervention Registry: Comparative Study of REDCap vs. CDR-Based openEHR Registry</span>. <em>Stud Health Technol Inform</em> 316:1069–1073. <a class="doi" href="https://doi.org/10.3233/SHTI240595" target="_blank" rel="noopener">doi.org/10.3233/SHTI240595</a></div>
+      <div class="pub"><span class="self">Kinast, B.</span>, Ulrich, H., Bergh, B., Schreiweis, B. (2023). <span class="pub-title">Functional Requirements for Medical Data Integration into Knowledge Management Environments: Requirements Elicitation Approach Based on Systematic Literature Analysis</span>. <em>Journal of Medical Internet Research</em> 25:e41344. <a class="doi" href="https://doi.org/10.2196/41344" target="_blank" rel="noopener">doi.org/10.2196/41344</a></div>
+      <div class="pub"><span class="self">Kinast, B.</span>, Lutz, M., Schreiweis, B. (2021). <span class="pub-title">Telemonitoring of Real-World Health Data in Cardiology: A Systematic Review</span>. <em>International Journal of Environmental Research and Public Health</em> 18(17):9070. <a class="doi" href="https://doi.org/10.3390/ijerph18179070" target="_blank" rel="noopener">doi.org/10.3390/ijerph18179070</a></div>
+
+      <div class="pub-group-title">Ko-Autorenschaften</div>
+      <div class="pub">Brandl, L., Kröner, S., Strotbaum, V., Grashof, R., <span class="self">Kinast, B.</span>, Schreiweis, B. (2025). <span class="pub-title">ePA für alle – alles geklärt? Ergebnisse eines interdisziplinären Panels auf der GMDS-Jahrestagung 2025</span>. <em>GMS Med Inform Biom Epidemiol</em> 22:Doc07.</div>
+      <div class="pub">Bronsch, T., Anywar, M., <span class="self">Kinast, B.</span>, Ulrich, H., Macedo, M., Kruse, J., Behrend, P., Schreiweis, B. (2025). <span class="pub-title">Implementation of a Patient Consent Management at a German Medical Data Integration Center</span>. <em>Stud Health Technol Inform</em> 329:1626–1627. <a class="doi" href="https://doi.org/10.3233/SHTI251134" target="_blank" rel="noopener">doi.org/10.3233/SHTI251134</a></div>
+      <div class="pub">Anywar, M., Macedo, M., Pazmiño, S., Bronsch, T., <span class="self">Kinast, B.</span>, Kock-Schoppenhauer, A.-K., Schreiweis, B. (2024). <span class="pub-title">Challenges and Lessons Learned in Mapping HL7 v2 Data to openEHR: Insights from UKSH Medical Data Integration Center</span>. <em>Stud Health Technol Inform</em> 316:1328–1332. <a class="doi" href="https://doi.org/10.3233/SHTI240658" target="_blank" rel="noopener">doi.org/10.3233/SHTI240658</a></div>
+      <div class="pub">Ulrich, H., Anywar, M., <span class="self">Kinast, B.</span>, Schreiweis, B. (2024). <span class="pub-title">Large-scale Standardized Image Integration for Secondary Use Research Projects</span>. <em>Stud Health Technol Inform</em> 310:174–178. <a class="doi" href="https://doi.org/10.3233/SHTI230950" target="_blank" rel="noopener">doi.org/10.3233/SHTI230950</a></div>
+      <div class="pub">Kock-Schoppenhauer, A.-K., Schreiweis, B., Ulrich, H., Reimer, N., Wiedekopf, J., <span class="self">Kinast, B.</span>, Busch, H., Bergh, B., Ingenerf, J. (2021). <span class="pub-title">Medical Data Engineering — Theory and Practice</span>. In: Leucker, M., Lamo, Y. (Hrsg.), HEDA 2021, S. 269–284. Springer. <a class="doi" href="https://doi.org/10.1007/978-3-030-87657-9_21" target="_blank" rel="noopener">doi.org/10.1007/978-3-030-87657-9_21</a></div>
+      <div class="pub">Tabak, M., Cabrita, M., Schüler, T., Hörst, D., Heuven, R., <span class="self">Kinast, B.</span>, Thomas, A. (2017). <span class="pub-title">"Dinner is ready!": Virtual Reality Assisted Training for Chronic Pain Rehabilitation</span>. <em>Extended Abstracts, Annual Symposium on Computer-Human Interaction in Play</em>, S. 283–289. <a class="doi" href="https://doi.org/10.1145/3130859.3131331" target="_blank" rel="noopener">doi.org/10.1145/3130859.3131331</a></div>
+
+      <div class="pub-group-title">Buchbeiträge</div>
+      <div class="pub">Schreiweis, B., Ulrich, H., Lehmann, H., Kock-Schoppenhauer, A.-K., <span class="self">Kinast, B.</span>, Bergh, B. (2024). <span class="pub-title">Die Wissensmanagementplattform für Versorgung und Forschung am Universitätsklinikum Schleswig-Holstein — Ein Praxisbeispiel</span>. In: Henke, V., Hülsken, G., Schneider, H., Varghese, J. (Hrsg.) Health Data Management. Springer Gabler, Wiesbaden, S. 690–700. <a class="doi" href="https://doi.org/10.1007/978-3-658-43236-2_58" target="_blank" rel="noopener">doi.org/10.1007/978-3-658-43236-2_58</a></div>
+      <div class="pub"><span class="self">Kinast, B.</span>, Orschulik, N., Heuven, R., Schüler, T., Birmes, B., Heuven, J., Cabrita, M., Tabak, M. (2019). <span class="pub-title">Virtual Reality in der Schmerztherapie — Status quo und Perspektiven</span>. In: Hauck, C., Uzarewicz, C. (Hrsg.) I, Robot – I, Care. De Gruyter Oldenbourg, Berlin/Boston, S. 91–110. <a class="doi" href="https://doi.org/10.1515/9783110558388-005" target="_blank" rel="noopener">doi.org/10.1515/9783110558388-005</a></div>
+
+      <div class="pub-group-title">Weitere Beiträge</div>
+      <div class="pub"><span class="self">Kinast, B.</span>, Lutz, M., Schreiweis, B. (2022). <span class="pub-title">Telemonitoring of real-world health data in cardiology: a systematic review</span>. GMDS 2022, Conference Abstract. <a class="doi" href="https://doi.org/10.3205/22gmds027" target="_blank" rel="noopener">doi.org/10.3205/22gmds027</a></div>
+      <div class="pub"><span class="self">Kinast, B.</span>, Schreiweis, B., Wiesner, M., Pobiruchin, M., Strotbaum, V. (2020). <span class="pub-title">Preprint, Peer-Review und Co — Wie wissenschaftliches Publizieren funktioniert</span>. GMDS, AG Consumer Health Informatics.</div>
+      <div class="pub"><span class="self">Kinast, B.</span>, Schreiweis, B., Strahwald, B., Wiesner, M., Pobiruchin, M., Strotbaum, V. (2020). WirVsVirus — Welchen Beitrag leisten Hackathons? GMDS, AG Consumer Health Informatics.</div>
+      <div class="pub"><span class="self">Kinast, B.</span>, Pobiruchin, M., Schreiweis, B., Strotbaum, V., Wiesner, M. (2019). <span class="pub-title">Erst zum Arzt oder gleich die App?! Ein Workshop der GMDS-AG Consumer Health Informatics</span>. Technical Report.</div>
+    </div>
+  </section>
+
+
+  <section id="kontakt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">04</span><h2>Kontakt</h2></div>
+      <p>Für Anfragen zu Forschung, Kooperationen oder Vorträgen erreichst du mich am besten per E-Mail.</p>
+      <div class="contact-links">
+        <a href="mailto:research@benjamin-kinast.de">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          research@benjamin-kinast.de
+        </a>
+        <a href="https://www.linkedin.com/in/benjaminkinast" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://orcid.org/0000-0003-2554-4381" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><text x="12" y="16" font-size="9" text-anchor="middle" fill="currentColor" font-family="sans-serif" stroke="none">iD</text></svg>
+          ORCID
+        </a>
+        <a href="https://scholar.google.com/citations?hl=de&user=Z05rTXoAAAAJ" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 1 9l11 7 9-5.7V17h2V9zM5 13.2V17l7 4 7-4v-3.8l-7 4.4z"/></svg>
+          Google Scholar
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y"></span> Benjamin Kinast</span>
+    <span>Kiel, Deutschland</span>
+  </div>
+</footer>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+
+</body>
+</html>
